@@ -1,20 +1,14 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   model.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mtawil <mtawil@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/04 18:29:16 by mtawil            #+#    #+#             */
-/*   Updated: 2026/02/04 18:29:17 by mtawil           ###   ########.fr       */
+/*   Created: 2026/02/04 18:28:59 by mtawil            #+#    #+#             */
+/*   Updated: 2026/02/04 18:29:08 by mtawil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./includes/philosophers.h"
+#include "../includes/philosophers.h"
 
-int main(void)
-{
-	long int milsec = get_time_ms();
-	printf("milliseconds passed since 1970 %ld", milsec);
-	return (0);
-}

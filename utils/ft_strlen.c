@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mtawil <mtawil@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/04 18:29:16 by mtawil            #+#    #+#             */
-/*   Updated: 2026/02/04 18:29:17 by mtawil           ###   ########.fr       */
+/*   Created: 2026/02/04 18:37:13 by mtawil            #+#    #+#             */
+/*   Updated: 2026/02/04 19:03:14 by mtawil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./includes/philosophers.h"
 
-int main(void)
-{
-	long int milsec = get_time_ms();
-	printf("milliseconds passed since 1970 %ld", milsec);
-	return (0);
+int ft_strlen(char *str) {
+    int i = 0;
+    while(str[i]){
+        i++;
+    }
+    return (i);
 }

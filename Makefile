@@ -2,7 +2,10 @@ CC = cc
 CFLAGS = -Wall -Wextra -Werror -Iincludes
 NAME = Philosopher
 
-SRC = main.c utils/time.c
+SRC = main.c \
+      $(wildcard src/*.c) \
+      $(wildcard src/cleaner/*.c) \
+      $(wildcard utils/*.c)
 
 OBJ = $(SRC:.c=.o)
 
@@ -14,6 +17,9 @@ $(NAME): $(OBJ)
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
 
+run: $(NAME)
+	./$(NAME)
+
 clean:
 	rm -f $(OBJ)
 
@@ -22,4 +28,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re
+.PHONY: all clean fclean re run

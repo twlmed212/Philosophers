@@ -6,7 +6,7 @@
 /*   By: mtawil <mtawil@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/04 18:28:51 by mtawil            #+#    #+#             */
-/*   Updated: 2026/02/04 18:28:52 by mtawil           ###   ########.fr       */
+/*   Updated: 2026/02/04 19:01:36 by mtawil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include <stdio.h>
 # include <pthread.h>
+# include <stdlib.h>
 # include <unistd.h>
 # include <sys/time.h>
 
@@ -52,12 +53,24 @@ typedef struct s_gc
 	struct s_gc			*next;
 }						t_gc;
 
+//  Arguments
+int check_arguments(int ac);
+
+
+// Utils Helper function
+int ft_strlen(char *str);
+int print_error(char *str);
 
 // Time Helper functions
 long int get_time_ms();
 long	get_timestamp(long start_time);
 void	ft_sleep(long ms);
 
+// Garbage collector
+t_gc	*create_node(void *data);
+t_gc	*get_garbage_collecter(void *ptr);
+void	*ft_malloc(size_t size);
+void	free_grabage(void);
 
 
 #endif
