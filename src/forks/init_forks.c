@@ -6,7 +6,7 @@
 /*   By: mtawil <mtawil@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/05 11:08:43 by mtawil            #+#    #+#             */
-/*   Updated: 2026/02/05 11:38:47 by mtawil           ###   ########.fr       */
+/*   Updated: 2026/02/05 18:35:34 by mtawil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ int	init_forks(t_data *data)
 	return (1);
 }
 
-void destroy_forks(t_data *data) {
+void destroy_mutex(t_data *data) {
     int i;
 
     i = 0;
@@ -40,4 +40,6 @@ void destroy_forks(t_data *data) {
 		pthread_mutex_destroy(&data->forks[i]);
         i++;
     }
+	pthread_mutex_destroy(data->print_mutex);
+
 }
