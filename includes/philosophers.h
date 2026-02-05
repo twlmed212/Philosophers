@@ -6,7 +6,7 @@
 /*   By: mtawil <mtawil@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/04 18:28:51 by mtawil            #+#    #+#             */
-/*   Updated: 2026/02/04 19:01:36 by mtawil           ###   ########.fr       */
+/*   Updated: 2026/02/04 21:27:31 by mtawil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,7 @@ typedef struct s_gc
 }						t_gc;
 
 //  Arguments
-int check_arguments(int ac);
-
+int	check_arguments(int argc, char **argv);
 
 // Utils Helper function
 int ft_strlen(char *str);
