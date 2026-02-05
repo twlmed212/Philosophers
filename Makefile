@@ -6,6 +6,7 @@ SRC = main.c \
       $(wildcard src/*.c) \
       $(wildcard src/cleaner/*.c) \
       $(wildcard src/parsing/*.c) \
+      $(wildcard src/forks/*.c) \
       $(wildcard utils/*.c)
 
 OBJ = $(SRC:.c=.o)

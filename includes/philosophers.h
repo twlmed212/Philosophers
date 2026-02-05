@@ -6,7 +6,7 @@
 /*   By: mtawil <mtawil@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/04 18:28:51 by mtawil            #+#    #+#             */
-/*   Updated: 2026/02/05 10:08:00 by mtawil           ###   ########.fr       */
+/*   Updated: 2026/02/05 11:11:06 by mtawil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ typedef struct s_data {
 	int must_eat_count;
 
     long start_time;
-    int did_any_one_died;
+    int someone_died;
 
     pthread_mutex_t *forks;
     pthread_mutex_t *print_mutex;
@@ -53,8 +53,12 @@ typedef struct s_gc
 	struct s_gc			*next;
 }						t_gc;
 
+// Managing Forks
+int	init_forks(t_data *data);
+
 //  Arguments
-int	check_arguments(int argc, char **argv);
+int	check_arguments(char *argv);
+t_data *parse_arguments(int argc, char **argv);
 
 // Utils Helper function
 int ft_strlen(char *str);

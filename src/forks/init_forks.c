@@ -1,36 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   init_forks.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mtawil <mtawil@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/04 18:29:16 by mtawil            #+#    #+#             */
-/*   Updated: 2026/02/05 11:13:03 by mtawil           ###   ########.fr       */
+/*   Created: 2026/02/05 11:08:43 by mtawil            #+#    #+#             */
+/*   Updated: 2026/02/05 11:13:26 by mtawil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
 
-int main(int ac, char **av)
+int	init_forks(t_data *data)
 {
-    t_data *data;
-	data = parse_arguments(ac, av);
-	if (!data)
+	int i;
+	
+	data->forks = ft_malloc(sizeof(pthread_mutex_t) * data->nmbr_philos);
+	
+	i = 0;
+	while (i < data->nmbr_philos)
 	{
-		free_grabage();
-		return (1);
+		if (pthread_mutex_init(&data->forks[i], NULL) != 0)
+		{
+            print_error("Error: Init forks..");
+			return (0);
+		}
+		i++;
 	}
-
-	printf("%d\n", data->nmbr_philos);
-	printf("%ld\n", data->time_to_die);
-	printf("%ld\n", data->time_to_eat);
-	printf("%ld\n", data->time_to_sleep);
-	printf("%d\n", data->must_eat_count);
-	if (!init_forks(data))
-	{
-		printf("Forks faileds :/:D\n");
-		return (1);
-	}
-	return (0);
+    printf("Forks initialized successfullly :D ");
+	return (1);
 }
