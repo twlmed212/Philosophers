@@ -1,24 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mtawil <mtawil@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/02/04 18:29:16 by mtawil            #+#    #+#             */
-/*   Updated: 2026/02/05 10:08:17 by mtawil           ###   ########.fr       */
+/*   Created: 2024/09/06 09:54:54 by mtawil            #+#    #+#             */
+/*   Updated: 2026/02/05 10:10:06 by mtawil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "philosophers.h"
-
-int main(int ac, char **av)
+int	ft_atoi(char *str)
 {
-	if (!check_arguments(ac, av))
-		return (1);
+	int	result;
+	int	i;
 
-	printf("%d", ft_atoi(av[1]));
-	long int milsec = get_time_ms();
-	printf("milliseconds passed since 1970 %ld", milsec);
-	return (0);
+	i = 0;
+	result = 0;
+	while (str[i] == ' '
+		|| (str[i] >= 9 && str[i] <= 13))
+	{
+		i++;
+	}
+	while (str[i] >= '0' && str[i] <= '9')
+	{
+		result = (result * 10) + (str[i] - '0');
+		i++;
+	}
+	return (result);
 }

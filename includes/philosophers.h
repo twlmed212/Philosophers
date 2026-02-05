@@ -6,7 +6,7 @@
 /*   By: mtawil <mtawil@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/04 18:28:51 by mtawil            #+#    #+#             */
-/*   Updated: 2026/02/04 21:27:31 by mtawil           ###   ########.fr       */
+/*   Updated: 2026/02/05 10:08:00 by mtawil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ int	check_arguments(int argc, char **argv);
 // Utils Helper function
 int ft_strlen(char *str);
 int print_error(char *str);
+int	ft_atoi(char *str);
 
 // Time Helper functions
 long int get_time_ms();
