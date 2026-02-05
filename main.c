@@ -6,7 +6,7 @@
 /*   By: mtawil <mtawil@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/04 18:29:16 by mtawil            #+#    #+#             */
-/*   Updated: 2026/02/05 11:36:49 by mtawil           ###   ########.fr       */
+/*   Updated: 2026/02/05 12:04:48 by mtawil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,11 +27,14 @@ int main(int ac, char **av)
 	printf("%ld\n", data->time_to_eat);
 	printf("%ld\n", data->time_to_sleep);
 	printf("%d\n", data->must_eat_count);
-	if (!init_forks(data))
+	if (!init_philos(data))
 	{
 		printf("Forks faileds :/:D\n");
 		return (1);
 	}
-	destroy_forks(data);
+	for (int i = 0; i < data->nmbr_philos; i++ ) {
+		t_philo x = data->philos[i];
+		printf("Philo Id %d total eats %d lasttime eat %ld\n", x.id,  x.total_eats, x.last_time_eat);
+	}
 	return (0);
 }

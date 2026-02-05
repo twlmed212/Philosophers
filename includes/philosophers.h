@@ -6,7 +6,7 @@
 /*   By: mtawil <mtawil@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/04 18:28:51 by mtawil            #+#    #+#             */
-/*   Updated: 2026/02/05 11:36:40 by mtawil           ###   ########.fr       */
+/*   Updated: 2026/02/05 12:01:38 by mtawil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,10 @@ typedef struct s_philo{
     int id;
     int total_eats;
     long last_time_eat;
-    
+
+    pthread_t		thread;
     struct s_data *data;
+
 } t_philo;
 
 
@@ -52,6 +54,9 @@ typedef struct s_gc
 	void				*data;
 	struct s_gc			*next;
 }						t_gc;
+
+// Managing Philos
+int init_philos(t_data *data);
 
 // Managing Forks
 int	init_forks(t_data *data);
