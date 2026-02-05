@@ -3,11 +3,8 @@ CFLAGS = -Wall -Wextra -Werror -Iincludes
 NAME = Philosopher
 
 SRC = main.c \
-      $(wildcard src/*.c) \
-      $(wildcard src/cleaner/*.c) \
-      $(wildcard src/parsing/*.c) \
-      $(wildcard src/forks/*.c) \
-      $(wildcard utils/*.c)
+      $(wildcard */*.c) \
+      $(wildcard src/*/*.c)
 
 OBJ = $(SRC:.c=.o)
 

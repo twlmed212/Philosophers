@@ -6,7 +6,7 @@
 /*   By: mtawil <mtawil@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/05 11:50:32 by mtawil            #+#    #+#             */
-/*   Updated: 2026/02/05 12:04:35 by mtawil           ###   ########.fr       */
+/*   Updated: 2026/02/05 12:18:03 by mtawil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,6 @@ int init_philos(t_data *data)
             1- pthread var_to_store_id
             2- pthread_create(var_to.., NULL, func_run, NULL)/// last null for argmunts
             3- pthread join(var, null)
-
-
-
         */        
        i++;
     }
