@@ -6,7 +6,7 @@
 /*   By: mtawil <mtawil@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/05 11:08:43 by mtawil            #+#    #+#             */
-/*   Updated: 2026/02/05 11:13:26 by mtawil           ###   ########.fr       */
+/*   Updated: 2026/02/05 11:36:34 by mtawil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,19 @@ int	init_forks(t_data *data)
 	i = 0;
 	while (i < data->nmbr_philos)
 	{
-		if (pthread_mutex_init(&data->forks[i], NULL) != 0)
+        if (pthread_mutex_init(&data->forks[i], NULL) != 0)
 		{
             print_error("Error: Init forks..");
 			return (0);
 		}
 		i++;
 	}
-    printf("Forks initialized successfullly :D ");
 	return (1);
+}
+
+void destroy_forks(t_data *data) {
+    for (int i = 0; i < 3; i++)
+	{
+		pthread_mutex_destroy(&data->forks[i]);
+	}
 }

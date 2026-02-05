@@ -6,7 +6,7 @@
 /*   By: mtawil <mtawil@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/04 18:29:16 by mtawil            #+#    #+#             */
-/*   Updated: 2026/02/05 11:13:03 by mtawil           ###   ########.fr       */
+/*   Updated: 2026/02/05 11:36:49 by mtawil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,5 +32,6 @@ int main(int ac, char **av)
 		printf("Forks faileds :/:D\n");
 		return (1);
 	}
+	destroy_forks(data);
 	return (0);
 }

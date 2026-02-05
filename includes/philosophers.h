@@ -6,7 +6,7 @@
 /*   By: mtawil <mtawil@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/04 18:28:51 by mtawil            #+#    #+#             */
-/*   Updated: 2026/02/05 11:11:06 by mtawil           ###   ########.fr       */
+/*   Updated: 2026/02/05 11:36:40 by mtawil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ typedef struct s_gc
 
 // Managing Forks
 int	init_forks(t_data *data);
+void destroy_forks(t_data *data);
 
 //  Arguments
 int	check_arguments(char *argv);
