@@ -6,7 +6,7 @@
 /*   By: mtawil <mtawil@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/04 18:28:51 by mtawil            #+#    #+#             */
-/*   Updated: 2026/02/05 12:01:38 by mtawil           ###   ########.fr       */
+/*   Updated: 2026/02/05 16:36:37 by mtawil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,9 @@ typedef struct s_gc
 	struct s_gc			*next;
 }						t_gc;
 
+// GameLooop Logic
+void *game_loop(void *arg);
+
 // Managing Philos
 int init_philos(t_data *data);
 
@@ -70,6 +73,7 @@ t_data *parse_arguments(int argc, char **argv);
 int ft_strlen(char *str);
 int print_error(char *str);
 int	ft_atoi(char *str);
+void print_logs(t_philo *philo, char *log);
 
 // Time Helper functions
 long int get_time_ms();

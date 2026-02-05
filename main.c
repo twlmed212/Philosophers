@@ -6,7 +6,7 @@
 /*   By: mtawil <mtawil@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/04 18:29:16 by mtawil            #+#    #+#             */
-/*   Updated: 2026/02/05 12:04:48 by mtawil           ###   ########.fr       */
+/*   Updated: 2026/02/05 16:42:45 by mtawil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,9 @@ int main(int ac, char **av)
 		return (1);
 	}
 	for (int i = 0; i < data->nmbr_philos; i++ ) {
-		t_philo x = data->philos[i];
-		printf("Philo Id %d total eats %d lasttime eat %ld\n", x.id,  x.total_eats, x.last_time_eat);
+		data->start_time = get_time_ms();
+		game_loop((void *)&data->philos[i]);
 	}
+	
 	return (0);
 }
