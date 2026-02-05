@@ -6,7 +6,7 @@
 /*   By: mtawil <mtawil@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/04 18:28:51 by mtawil            #+#    #+#             */
-/*   Updated: 2026/02/05 16:36:37 by mtawil           ###   ########.fr       */
+/*   Updated: 2026/02/05 16:48:49 by mtawil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,8 @@ int init_philos(t_data *data);
 // Managing Forks
 int	init_forks(t_data *data);
 void destroy_forks(t_data *data);
+int take_left_fork(t_philo *philo);
+int take_right_fork(t_philo *philo);
 
 //  Arguments
 int	check_arguments(char *argv);

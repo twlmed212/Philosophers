@@ -6,7 +6,7 @@
 /*   By: mtawil <mtawil@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/05 16:10:54 by mtawil            #+#    #+#             */
-/*   Updated: 2026/02/05 16:40:31 by mtawil           ###   ########.fr       */
+/*   Updated: 2026/02/05 16:49:50 by mtawil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,12 @@
 void *game_loop(void *arg)
 {
     t_philo *philo = (t_philo *)arg;
+    int left_fork;
+    int right_fork;
+
+    left_fork = take_left_fork(philo);
+    right_fork = take_right_fork(philo);
+    
     int testing = 0;
     while (testing < 3)
     {
