@@ -6,9 +6,9 @@
 /*   By: mtawil <mtawil@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/04 18:28:59 by mtawil            #+#    #+#             */
-/*   Updated: 2026/02/04 18:29:08 by mtawil           ###   ########.fr       */
+/*   Updated: 2026/02/05 10:46:45 by mtawil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/philosophers.h"
+#include "philosophers.h"
 

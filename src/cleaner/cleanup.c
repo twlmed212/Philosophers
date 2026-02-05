@@ -6,11 +6,11 @@
 /*   By: mtawil <mtawil@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 16:41:11 by mtawil            #+#    #+#             */
-/*   Updated: 2026/02/04 17:46:42 by mtawil           ###   ########.fr       */
+/*   Updated: 2026/02/05 10:46:37 by mtawil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../../includes/philosophers.h"
+#include "philosophers.h"
 
 t_gc	*create_node(void *data)
 {

@@ -6,11 +6,11 @@
 /*   By: mtawil <mtawil@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/04 18:29:10 by mtawil            #+#    #+#             */
-/*   Updated: 2026/02/04 18:29:11 by mtawil           ###   ########.fr       */
+/*   Updated: 2026/02/05 10:46:49 by mtawil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/philosophers.h"
+#include "philosophers.h"
 
 long int get_time_ms() {
     struct timeval tv;
