@@ -6,7 +6,7 @@
 /*   By: mtawil <mtawil@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/04 18:29:16 by mtawil            #+#    #+#             */
-/*   Updated: 2026/02/05 19:25:07 by mtawil           ###   ########.fr       */
+/*   Updated: 2026/02/05 20:19:21 by mtawil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,8 +33,7 @@ int main(int ac, char **av)
 		return (1);
 	}
 	init_forks(data);
-	data->print_mutex = ft_malloc(sizeof(pthread_mutex_t));
-	pthread_mutex_init(data->print_mutex, NULL);
+	
 	for (int i = 0; i < data->nmbr_philos; i++ ) {
 		data->start_time = get_time_ms();
 		int err = pthread_create(&data->philos[i].thread, NULL, game_loop, &data->philos[i]);
@@ -43,6 +42,14 @@ int main(int ac, char **av)
 			exit(12);
 		}
 	}
+
+	int err = pthread_create(&data->listening_for_deaths, NULL, listening_for_deaths, data);
+	if (err != 0){
+		// free anything allocated and exit the program
+		exit(12);
+	}
+
+		
 	for (int i = 0; i < data->nmbr_philos; i++ ) {
 		printf("waitng\n");
 		int err = pthread_join(data->philos->thread, NULL);

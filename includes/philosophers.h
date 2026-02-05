@@ -6,7 +6,7 @@
 /*   By: mtawil <mtawil@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/04 18:28:51 by mtawil            #+#    #+#             */
-/*   Updated: 2026/02/05 18:35:34 by mtawil           ###   ########.fr       */
+/*   Updated: 2026/02/05 20:19:10 by mtawil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ typedef struct s_philo{
     long last_time_eat;
 
     pthread_t		thread;
+    pthread_mutex_t *last_time_eat_mutex;
+
     struct s_data *data;
 
 } t_philo;
@@ -44,6 +46,7 @@ typedef struct s_data {
     pthread_mutex_t *forks;
     pthread_mutex_t *print_mutex;
     pthread_mutex_t *death_mutex;
+    pthread_t		listening_for_deaths;
 
     t_philo *philos;
 } t_data;
@@ -57,6 +60,7 @@ typedef struct s_gc
 
 // GameLooop Logic
 void *game_loop(void *arg);
+void *listening_for_deaths(void *agr);
 
 // Managing Philos
 int init_philos(t_data *data);

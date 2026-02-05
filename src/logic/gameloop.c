@@ -6,11 +6,23 @@
 /*   By: mtawil <mtawil@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/05 16:10:54 by mtawil            #+#    #+#             */
-/*   Updated: 2026/02/05 18:38:08 by mtawil           ###   ########.fr       */
+/*   Updated: 2026/02/05 20:17:31 by mtawil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
+
+
+static int	stop(t_philo *philo)
+{
+	int dead = 0;
+	
+	pthread_mutex_lock(philo->data->death_mutex);
+	dead = philo->data->someone_died;
+	pthread_mutex_unlock(philo->data->death_mutex);
+	
+	return (dead);
+}
 
 void *game_loop(void *arg)
 {
@@ -21,8 +33,11 @@ void *game_loop(void *arg)
 	left_fork = take_left_fork(philo);
 	right_fork = take_right_fork(philo);
 
+	pthread_mutex_lock(philo->last_time_eat_mutex);
 	philo->last_time_eat = philo->data->start_time;
-	while (1)
+	pthread_mutex_unlock(philo->last_time_eat_mutex);
+	
+	while (!stop(philo))
 	{
 		// simplte testing semulation
 		pthread_mutex_lock(&philo->data->forks[left_fork]);
@@ -48,3 +63,4 @@ void *game_loop(void *arg)
 	}
 	return (NULL);
 }
+
