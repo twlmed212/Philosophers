@@ -6,7 +6,7 @@
 /*   By: mtawil <mtawil@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/05 19:47:35 by mtawil            #+#    #+#             */
-/*   Updated: 2026/02/05 20:19:45 by mtawil           ###   ########.fr       */
+/*   Updated: 2026/02/06 14:21:19 by mtawil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,36 +29,59 @@ static int is_philos_dead(t_philo *philo)
     if (diffrent > philo->data->time_to_die)
     {
         pthread_mutex_lock(philo->data->print_mutex);
-    
-		long timestamp = get_timestamp(philo->data->start_time);
-		printf("%ld %d died\n", timestamp, philo->id);
-    
-		pthread_mutex_unlock(philo->data->print_mutex);
+        printf("%ld %d died\n",
+            get_timestamp(philo->data->start_time), philo->id);
+        pthread_mutex_lock(philo->data->death_mutex);
+        philo->data->someone_died = 1;
+        pthread_mutex_unlock(philo->data->death_mutex);
+        pthread_mutex_unlock(philo->data->print_mutex);
         return (1);
     }
     return (0);
 }
 
+static int check_all_eats(t_data *data)
+{
+    int i;
+    int eats;
+
+    if (data->must_eat_count == -1)
+        return (0);
+    i = 0;
+    while (i < data->nmbr_philos)
+    {
+        pthread_mutex_lock(data->philos[i].last_time_eat_mutex);
+        eats = data->philos[i].total_eats;
+        pthread_mutex_unlock(data->philos[i].last_time_eat_mutex);
+        if (eats < data->must_eat_count)
+            return (0);
+        i++;
+    }
+    return (1);
+}
+
 void *listening_for_deaths(void *agr)
 {
-    t_data *data = (t_data *) agr;
+    t_data *data = (t_data *)agr;
     int i;
 
-    
-    while(1)
+    while (1)
     {
-        i  = 0;
-        while(i < data->nmbr_philos)
+        i = 0;
+        while (i < data->nmbr_philos)
         {
             if (is_philos_dead(&data->philos[i]))
-            {
-                pthread_mutex_lock(data->death_mutex);
-                data->someone_died = 1;
-                pthread_mutex_unlock(data->death_mutex);
                 return (NULL);
-            }
             i++;
         }
+        if (check_all_eats(data))
+        {
+            pthread_mutex_lock(data->death_mutex);
+            data->someone_died = 1;
+            pthread_mutex_unlock(data->death_mutex);
+            return (NULL);
+        }
+        
         usleep(1000);
     }
 }

@@ -6,7 +6,7 @@
 /*   By: mtawil <mtawil@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/04 18:28:51 by mtawil            #+#    #+#             */
-/*   Updated: 2026/02/06 02:35:22 by mtawil           ###   ########.fr       */
+/*   Updated: 2026/02/06 13:53:27 by mtawil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ t_data *parse_arguments(int argc, char **argv);
 // Utils Helper function
 int ft_strlen(char *str);
 int print_error(char *str);
-int	ft_atoi(char *str);
+long	ft_atoi(char *str);
 void print_logs(t_philo *philo, char *log);
 
 // Time Helper functions

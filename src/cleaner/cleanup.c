@@ -6,7 +6,7 @@
 /*   By: mtawil <mtawil@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/17 16:41:11 by mtawil            #+#    #+#             */
-/*   Updated: 2026/02/05 10:46:37 by mtawil           ###   ########.fr       */
+/*   Updated: 2026/02/06 13:56:17 by mtawil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ void	*ft_malloc(size_t size)
 	ptr = malloc(size);
 	if (!ptr)
 	{
+		printf("{%zu}", size);
 		perror("Philo: Memory allocation failed!");
 		free_grabage();
 		exit(2);

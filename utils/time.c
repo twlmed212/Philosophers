@@ -6,7 +6,7 @@
 /*   By: mtawil <mtawil@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/04 18:29:10 by mtawil            #+#    #+#             */
-/*   Updated: 2026/02/05 10:46:49 by mtawil           ###   ########.fr       */
+/*   Updated: 2026/02/06 13:48:15 by mtawil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,9 @@ long	get_timestamp(long start_time)
 
 void	ft_sleep(long ms)
 {
-	usleep(ms * 1000);
+	long	start;
+
+	start = get_time_ms();
+	while ((get_time_ms() - start) < ms)
+		usleep(ms / 10);
 }

@@ -6,7 +6,7 @@
 /*   By: mtawil <mtawil@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/05 10:47:31 by mtawil            #+#    #+#             */
-/*   Updated: 2026/02/05 11:19:30 by mtawil           ###   ########.fr       */
+/*   Updated: 2026/02/06 13:54:37 by mtawil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ t_data *parse_arguments(int argc, char **argv)
     }
     
     data = ft_malloc(sizeof(t_data));
+    
     
     data->nmbr_philos = ft_atoi(argv[1]);
     data->time_to_die = ft_atoi(argv[2]);
