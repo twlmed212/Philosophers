@@ -6,11 +6,14 @@
 /*   By: mtawil <mtawil@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/04 18:29:16 by mtawil            #+#    #+#             */
-/*   Updated: 2026/02/06 03:45:15 by mtawil           ###   ########.fr       */
+/*   Updated: 2026/02/06 18:27:45 by mtawil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "philosophers.h"
+
+static void	init_data(t_data *data);
+static void	create_threads(t_data *data);
 
 int	main(int ac, char **av)
 {
@@ -19,15 +22,27 @@ int	main(int ac, char **av)
 
 	data = parse_arguments(ac, av);
 	if (!data)
-	{
-		free_grabage();
-		return (1);
-	}
+		return (free_grabage(), 1);
 	if (!init_philos(data) || !init_forks(data) || !init_mutex(data))
+		return (free_grabage(), 1);
+	init_data(data);
+	create_threads(data);
+	pthread_join(data->listening_for_deaths, NULL);
+	i = 0;
+	while (i < data->nmbr_philos)
 	{
-		free_grabage();
-		return (1);
+		pthread_join(data->philos[i].thread, NULL);
+		i++;
 	}
+	destroy_mutex(data);
+	free_grabage();
+	return (0);
+}
+
+static void	init_data(t_data *data)
+{
+	int	i;
+
 	data->start_time = get_time_ms();
 	data->someone_died = 0;
 	i = 0;
@@ -40,9 +55,14 @@ int	main(int ac, char **av)
 	{
 		destroy_mutex(data);
 		free_grabage();
-		return (0);
+		exit(1);
 	}
-	// Create philosopher threads
+}
+
+static void	create_threads(t_data *data)
+{
+	int	i;
+
 	i = 0;
 	while (i < data->nmbr_philos)
 	{
@@ -50,8 +70,9 @@ int	main(int ac, char **av)
 				&data->philos[i]) != 0)
 		{
 			printf("Error: Failed to create philosopher thread %d\n", i + 1);
+			destroy_mutex(data);
 			free_grabage();
-			return (1);
+			exit(1);
 		}
 		i++;
 	}
@@ -59,17 +80,8 @@ int	main(int ac, char **av)
 			data) != 0)
 	{
 		printf("Error: Failed to create monitor thread\n");
+		destroy_mutex(data);
 		free_grabage();
-		return (1);
+		exit(1);
 	}
-	pthread_join(data->listening_for_deaths, NULL);
-	i = 0;
-	while (i < data->nmbr_philos)
-	{
-		pthread_join(data->philos[i].thread, NULL);
-		i++;
-	}
-	destroy_mutex(data);
-	free_grabage();
-	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: mtawil <mtawil@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/06 09:54:54 by mtawil            #+#    #+#             */
-/*   Updated: 2026/02/06 14:17:42 by mtawil           ###   ########.fr       */
+/*   Updated: 2026/02/06 18:46:35 by mtawil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ int	ft_strlen(char *str)
 
 long	ft_atoi(char *str)
 {
-	long result;
-	int i;
+	long	result;
+	int		i;
 
 	i = 0;
 	result = 0;

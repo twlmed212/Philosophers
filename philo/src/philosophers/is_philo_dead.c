@@ -6,7 +6,7 @@
 /*   By: mtawil <mtawil@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/05 19:47:35 by mtawil            #+#    #+#             */
-/*   Updated: 2026/02/06 14:21:19 by mtawil           ###   ########.fr       */
+/*   Updated: 2026/02/06 17:51:02 by mtawil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +39,8 @@ static int	is_philos_dead(t_philo *philo)
 
 static int	check_all_eats(t_data *data)
 {
-	int	i;
-	int	eats;
+	int		i;
+	int		eats;
 
 	if (data->must_eat_count == -1)
 		return (0);
@@ -59,9 +59,10 @@ static int	check_all_eats(t_data *data)
 
 void	*listening_for_deaths(void *agr)
 {
-	t_data *data = (t_data *)agr;
-	int i;
+	int			i;
+	t_data		*data;
 
+	data = (t_data *)agr;
 	while (1)
 	{
 		i = 0;
@@ -78,7 +79,6 @@ void	*listening_for_deaths(void *agr)
 			pthread_mutex_unlock(data->death_mutex);
 			return (NULL);
 		}
-
 		usleep(1000);
 	}
 }

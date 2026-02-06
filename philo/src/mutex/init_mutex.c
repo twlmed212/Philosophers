@@ -6,7 +6,7 @@
 /*   By: mtawil <mtawil@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/05 19:53:09 by mtawil            #+#    #+#             */
-/*   Updated: 2026/02/06 03:40:58 by mtawil           ###   ########.fr       */
+/*   Updated: 2026/02/06 17:47:08 by mtawil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ int	init_mutex(t_data *data)
 	i = 0;
 	while (i < data->nmbr_philos)
 	{
-		data->philos[i].last_time_eat_mutex = ft_malloc(sizeof(pthread_mutex_t));
+		data->philos[i].last_time_eat_mutex
+			= ft_malloc(sizeof(pthread_mutex_t));
 		pthread_mutex_init(data->philos[i].last_time_eat_mutex, NULL);
 		i++;
 	}
