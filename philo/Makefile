@@ -1,6 +1,6 @@
 CC = cc
 CFLAGS = -Wall -Wextra -Werror -Iincludes -g -pthread
-NAME = philo
+NAME = philosopher
 
 SRC = main.c \
       $(wildcard */*.c) \

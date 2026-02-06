@@ -6,7 +6,7 @@
 /*   By: mtawil <mtawil@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/04 18:34:43 by mtawil            #+#    #+#             */
-/*   Updated: 2026/02/06 15:36:35 by mtawil           ###   ########.fr       */
+/*   Updated: 2026/02/06 13:59:07 by mtawil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,18 +36,9 @@ static int	is_valid_nmbr(char *str)
 
 int	check_arguments(char *argv)
 {
-	int nmbr;
-
-	nmbr = ft_atoi(argv);
-	if (!is_valid_nmbr(argv))
-		return (printf("Error: '%s' is not valid argument\n", argv), 0);
-	if (nmbr <= 0)
+	if (!is_valid_nmbr(argv) || ft_atoi(argv) == -1)
 	{
-		if (nmbr == 0){
-			printf("Error: '%s' enter a number greater than 0.\n", argv);
-		}else{
-			printf("Error: '%s' is not valid argument\n", argv);
-		}
+		printf("Error: '%s' is not valid argument\n", argv);
 		return (0);
 	}
 	
