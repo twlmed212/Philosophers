@@ -1,23 +1,30 @@
 CC = cc
 CFLAGS = -Wall -Wextra -Werror -Iincludes -g -pthread
-NAME = philosopher
+NAME = philo
 
 SRC = main.c \
-      $(wildcard */*.c) \
-      $(wildcard src/*/*.c)
+      src/cleaner/cleanup.c \
+      src/forks/grap_forks.c \
+      src/forks/init_forks.c \
+      src/logic/gameloop.c \
+      src/mutex/init_mutex.c \
+      src/parsing/parsing.c \
+      src/parsing/validation.c \
+      src/philosophers/init_philos.c \
+      src/philosophers/is_philo_dead.c \
+      utils/ft_funcs.c \
+      utils/logs.c \
+      utils/time.c
 
 OBJ = $(SRC:.c=.o)
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	$(CC) $(CFLAGS) -o $(NAME) $(OBJ)
+	@$(CC) $(CFLAGS) -o $(NAME) $(OBJ)
 
 %.o: %.c
 	$(CC) $(CFLAGS) -c $< -o $@
-
-run: $(NAME)
-	./$(NAME)
 
 clean:
 	rm -f $(OBJ)
@@ -27,4 +34,4 @@ fclean: clean
 
 re: fclean all
 
-.PHONY: all clean fclean re run
+.PHONY: all clean fclean re

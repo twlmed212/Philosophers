@@ -12,23 +12,26 @@
 
 #include "philosophers.h"
 
-int ft_strlen(char *str) {
-    int i = 0;
-    while(str[i]){
-        i++;
-    }
-    return (i);
+int	ft_strlen(char *str)
+{
+	int	i;
+
+	i = 0;
+	while (str[i])
+	{
+		i++;
+	}
+	return (i);
 }
 
 long	ft_atoi(char *str)
 {
-	long	result;
-	int	i;
+	long result;
+	int i;
 
 	i = 0;
 	result = 0;
-	while (str[i] == ' '
-		|| (str[i] >= 9 && str[i] <= 13))
+	while (str[i] == ' ' || (str[i] >= 9 && str[i] <= 13))
 	{
 		i++;
 	}

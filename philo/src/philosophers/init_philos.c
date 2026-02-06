@@ -12,22 +12,19 @@
 
 #include "philosophers.h"
 
-int init_philos(t_data *data)
+int	init_philos(t_data *data)
 {
-    int i;
+	int	i;
 
-    data->philos = ft_malloc(sizeof(t_philo) * data->nmbr_philos);
-    
-    i = 0;
-    while(i < data->nmbr_philos)
-    {
-        data->philos[i].id = i + 1;
-        data->philos[i].total_eats = 0;
-        data->philos[i].last_time_eat = 0;
-        
-        data->philos[i].data = data;
-        i++;
-    }
-
-    return (1);
+	data->philos = ft_malloc(sizeof(t_philo) * data->nmbr_philos);
+	i = 0;
+	while (i < data->nmbr_philos)
+	{
+		data->philos[i].id = i + 1;
+		data->philos[i].total_eats = 0;
+		data->philos[i].last_time_eat = 0;
+		data->philos[i].data = data;
+		i++;
+	}
+	return (1);
 }

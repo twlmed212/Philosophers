@@ -18,11 +18,10 @@ static int	is_digit(char c)
 }
 static int	is_valid_nmbr(char *str)
 {
-	int i;
-	
+	int	i;
+
 	if (!str || str[0] == '\0')
 		return (0);
-	
 	i = 0;
 	while (str[i])
 	{
@@ -30,7 +29,6 @@ static int	is_valid_nmbr(char *str)
 			return (0);
 		i++;
 	}
-	
 	return (1);
 }
 
@@ -41,6 +39,5 @@ int	check_arguments(char *argv)
 		printf("Error: '%s' is not valid argument\n", argv);
 		return (0);
 	}
-	
 	return (1);
 }

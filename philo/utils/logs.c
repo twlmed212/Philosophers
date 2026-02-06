@@ -12,11 +12,12 @@
 
 #include "philosophers.h"
 
-int print_error(char *str){
-    return write(2, str, ft_strlen(str));
+int	print_error(char *str)
+{
+	return (write(2, str, ft_strlen(str)));
 }
 
-void print_logs(t_philo *philo, char *log)
+void	print_logs(t_philo *philo, char *log)
 {
 	long timenow;
 	int died;
@@ -28,11 +29,11 @@ void print_logs(t_philo *philo, char *log)
 	died = philo->data->someone_died;
 	pthread_mutex_unlock(philo->data->death_mutex);
 
-	if (!died){
+	if (!died)
+	{
 		timenow = get_timestamp(philo->data->start_time);
 		printf("%ld %d %s\n", timenow, philo->id, log);
 	}
-	
-	pthread_mutex_unlock(philo->data->print_mutex);
 
+	pthread_mutex_unlock(philo->data->print_mutex);
 }

@@ -14,16 +14,15 @@
 
 int	init_forks(t_data *data)
 {
-	int i;
-	
+	int	i;
+
 	data->forks = ft_malloc(sizeof(pthread_mutex_t) * data->nmbr_philos);
-	
 	i = 0;
 	while (i < data->nmbr_philos)
 	{
-        if (pthread_mutex_init(&data->forks[i], NULL) != 0)
+		if (pthread_mutex_init(&data->forks[i], NULL) != 0)
 		{
-            print_error("Error: Init forks..");
+			print_error("Error: Init forks..");
 			return (0);
 		}
 		i++;
@@ -31,16 +30,17 @@ int	init_forks(t_data *data)
 	return (1);
 }
 
-void destroy_mutex(t_data *data) {
-    int i;
+void	destroy_mutex(t_data *data)
+{
+	int	i;
 
-    i = 0;
-    while (i < data->nmbr_philos)
+	i = 0;
+	while (i < data->nmbr_philos)
 	{
 		pthread_mutex_destroy(&data->forks[i]);
-        pthread_mutex_destroy(data->philos[i].last_time_eat_mutex);
-        i++;
-    }
+		pthread_mutex_destroy(data->philos[i].last_time_eat_mutex);
+		i++;
+	}
 	pthread_mutex_destroy(data->print_mutex);
 	pthread_mutex_destroy(data->death_mutex);
 }
