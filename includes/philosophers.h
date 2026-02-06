@@ -6,7 +6,7 @@
 /*   By: mtawil <mtawil@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/04 18:28:51 by mtawil            #+#    #+#             */
-/*   Updated: 2026/02/05 20:19:10 by mtawil           ###   ########.fr       */
+/*   Updated: 2026/02/06 02:35:22 by mtawil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,11 +65,14 @@ void *listening_for_deaths(void *agr);
 // Managing Philos
 int init_philos(t_data *data);
 
+//Managing Mutex
+int init_mutex(t_data *data);
+
 // Managing Forks
 int	init_forks(t_data *data);
 void destroy_mutex(t_data *data);
-int take_left_fork(t_philo *philo);
-int take_right_fork(t_philo *philo);
+void take_forks(t_philo *philo);
+void drop_forks(t_philo *philo);
 
 //  Arguments
 int	check_arguments(char *argv);

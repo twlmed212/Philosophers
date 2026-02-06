@@ -6,7 +6,7 @@
 /*   By: mtawil <mtawil@student.1337.ma>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/02/05 11:08:43 by mtawil            #+#    #+#             */
-/*   Updated: 2026/02/05 19:51:39 by mtawil           ###   ########.fr       */
+/*   Updated: 2026/02/06 02:46:43 by mtawil           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,9 @@ void destroy_mutex(t_data *data) {
     while (i < data->nmbr_philos)
 	{
 		pthread_mutex_destroy(&data->forks[i]);
+        pthread_mutex_destroy(data->philos[i].last_time_eat_mutex);
         i++;
     }
 	pthread_mutex_destroy(data->print_mutex);
-
+	pthread_mutex_destroy(data->death_mutex);
 }
